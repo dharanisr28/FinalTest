@@ -13,21 +13,37 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          {_Col0_} as string,",
 				"          {_Col1_} as string,",
 				"          {_Col2_} as string,",
 				"          {_Col3_} as string,",
-				"          {_Col4_} as double,",
-				"          {_Col5_} as string,",
-				"          {_Col6_} as double,",
-				"          {_Col7_} as string",
+				"          {_Col4_} as string,",
+				"          {_Col5_} as double,",
+				"          {_Col6_} as string,",
+				"          {_Col7_} as double",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> campaignanalytics"
+				"     ignoreNoFilesFound: false) ~> campaignanalytics",
+				"campaignanalytics select(mapColumn(",
+				"          {_Col0_},",
+				"          {_Col1_},",
+				"          {_Col2_},",
+				"          {_Col3_},",
+				"          {_Col4_},",
+				"          {_Col5_},",
+				"          {_Col6_},",
+				"          {_Col7_}",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
