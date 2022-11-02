@@ -16,7 +16,6 @@
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": false,
-			"nullValue": "ifNull({ColumnName}, 'Unknown')",
 			"quoteChar": "\""
 		},
 		"schema": [
