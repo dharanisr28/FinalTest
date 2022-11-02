@@ -27,7 +27,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> campaignanalytics"
+				"     ignoreNoFilesFound: false,",
+				"     skipLines: 3) ~> campaignanalytics"
 			]
 		}
 	}
