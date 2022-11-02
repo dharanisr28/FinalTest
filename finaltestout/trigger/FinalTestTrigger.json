@@ -1,0 +1,25 @@
+{
+	"name": "FinalTestTrigger",
+	"properties": {
+		"description": "FinalTestTrigger",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-11-02T22:00:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
