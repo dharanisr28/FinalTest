@@ -16,6 +16,12 @@
 			"transformations": [
 				{
 					"name": "MapCampaignAnalytics"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "removecolumns"
 				}
 			],
 			"scriptLines": [
@@ -43,7 +49,19 @@
 				"          RevenueTarget = {_Col7_}",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> MapCampaignAnalytics"
+				"     skipDuplicateMapOutputs: true) ~> MapCampaignAnalytics",
+				"MapCampaignAnalytics derive(Revenue = toDecimal(replace(concat(toString(RevenuePart1), toString(Revenue)), '\\\\', ''), 10, 2, '$###,###.##'),",
+				"          RevenueTarget = toDecimal(replace(concat(toString(RevenueTargetPart1), toString(RevenueTarget)), '\\\\', ''), 10, 2, '$###,###.##')) ~> derivedColumn1",
+				"derivedColumn1 select(mapColumn(",
+				"          Region,",
+				"          Country,",
+				"          ProductCategory,",
+				"          CampaignName,",
+				"          Revenue,",
+				"          RevenueTarget",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> removecolumns"
 			]
 		}
 	}
