@@ -15,7 +15,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "MapCampaignAnalytics"
 				}
 			],
 			"scriptLines": [
@@ -33,17 +33,17 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> campaignanalytics",
 				"campaignanalytics select(mapColumn(",
-				"          {_Col0_},",
-				"          {_Col1_},",
-				"          {_Col2_},",
-				"          {_Col3_},",
-				"          {_Col4_},",
-				"          {_Col5_},",
-				"          {_Col6_},",
-				"          {_Col7_}",
+				"          Region = {_Col0_},",
+				"          Country = {_Col1_},",
+				"          ProductCategory = {_Col2_},",
+				"          CampaignName = {_Col3_},",
+				"          RevenuePart1 = {_Col4_},",
+				"          Revenue = {_Col5_},",
+				"          RevenueTargetPart1 = {_Col6_},",
+				"          RevenueTarget = {_Col7_}",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> MapCampaignAnalytics"
 			]
 		}
 	}
