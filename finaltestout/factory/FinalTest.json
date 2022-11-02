@@ -1,0 +1,9 @@
+{
+	"name": "FinalTest",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "02029d4e-97a9-4c55-8c5c-d85212d5f1f0",
+		"tenantId": "dccfcb8d-a808-49df-aafe-d6bed33a444e"
+	}
+}
