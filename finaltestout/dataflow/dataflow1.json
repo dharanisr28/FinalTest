@@ -12,7 +12,15 @@
 					"name": "campaignanalytics"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CampaignFinalTest",
+						"type": "DatasetReference"
+					},
+					"name": "TargetTable"
+				}
+			],
 			"transformations": [
 				{
 					"name": "MapCampaignAnalytics"
@@ -61,7 +69,27 @@
 				"          RevenueTarget",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> removecolumns"
+				"     skipDuplicateMapOutputs: true) ~> removecolumns",
+				"removecolumns sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Region as string,",
+				"          Country as string,",
+				"          ProductCategory as string,",
+				"          CampaignName as string,",
+				"          Revenue as decimal(10,2),",
+				"          RevenueTarget as decimal(10,2),",
+				"          City as string,",
+				"          State as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> TargetTable"
 			]
 		}
 	}
